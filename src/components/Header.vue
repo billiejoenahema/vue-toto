@@ -3,8 +3,8 @@
     <div class="app-name-wrapper">
       <span>Todo App</span>
     </div>
-    <div class="add-new">新規作成</div>
-    <AddNewModal v-if="isShowModal" />
+    <div class="add-new" @click="newPost" >新規作成</div>
+    <AddNewModal @closeModal="closeModal" v-if="isShowModal" />
   </div>
 </template>
 
@@ -18,6 +18,14 @@ export default {
     return {
       isShowModal: false
     }
-  }
+  },
+  methods: {
+    newPost: function() {
+      this.isShowModal = true
+    },
+    closeModal: function() {
+      this.isShowModal = false
+    }
+  },
 }
 </script>

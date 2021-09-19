@@ -19,12 +19,12 @@
   color: black;
   cursor: pointer;
 }
-.mainContent {
+.main-content {
   width: 50%;
   height: 100vh;
   margin: 90px auto 0;
 }
-.todoRow {
+.todo-row {
   display: flex;
   flex-direction: row;
   border-bottom: lightgray 1px solid;
@@ -32,10 +32,10 @@
   margin-bottom: 30px;
   padding: 5px;
 }
-.titleWrapper {
+.title-wrapper {
   width: 250px;
 }
-.overFlow {
+.over-flow {
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
@@ -44,10 +44,10 @@
   width: 50px;
   margin-left: 40px;
 }
-.isDone {
+.is-done {
   margin-left: 90px;
 }
-.isDone select {
+.is-done select {
   outline: none;
   border-radius: 50px;
   width: 80px;
@@ -69,19 +69,19 @@
   line-height: 30px;
   cursor: pointer;
 }
-.roundBtn {
+.round-btn {
   border: 1px solid green;
   border-radius: 50px;
   text-align: center;
   background-color: #42b983;
 }
-.delBtn {
+.del-btn {
   border: 1px solid red;
   border-radius: 50px;
   text-align: center;
   background-color: lightcoral;
 }
-.roundBtn:hover {
+.round-btn:hover {
   cursor: pointer;
 }
 .add-new-area {
@@ -112,10 +112,10 @@
   width: 200px;
   outline: none;
 }
-.inputArea div {
+.input-area div {
   height: 40px;
 }
-.inputArea input {
+.input-area input {
   height: 20px;
   border: 1px solid darkgray;
   border-radius: 5px;
@@ -127,14 +127,14 @@
   border-radius: 5px;
   padding: 7px;
 }
-.inputArea div:nth-child(2) {
+.input-area div:nth-child(2) {
   margin-top: 30px;
 }
-.btnWrapper {
+.btn-wrapper {
   float: right;
   margin-right: 19%;
 }
-.btnWrapper button {
+.btn-wrapper button {
   height: 35px;
   width: 70px;
   background-color: dodgerblue;
@@ -142,16 +142,16 @@
   border: 1px solid lightblue;
   border-radius: 10px;
 }
-.btnWrapper button:disabled {
+.btn-wrapper button:disabled {
   border: 1px solid darkgray;
   background-color: darkgray;
 }
-.sortConditions {
+.sort-conditions {
   float: right;
   margin-right: 20%;
   margin-top: 30px;
 }
-.sortConditions select {
+.sort-conditions select {
   padding: 5px;
   height: 30px;
   margin-left: 5px;

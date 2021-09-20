@@ -18,7 +18,7 @@
     <div class="edit edit-btn round-btn" >
       <span>編集</span>
     </div>
-    <div class="delete delete-btn round-btn" >
+    <div @click="deleteTodo" class="delete delete-btn round-btn" >
       <span>削除</span>
     </div>
   </div>
@@ -32,6 +32,10 @@ export default {
     todoInfo: {
       type: Object,
       repuired: true,
+    },
+    index: {
+      type: Number,
+      required: true,
     }
   },
   data() {
@@ -44,6 +48,11 @@ export default {
       const type = priorityTypes.find((item) => item.priorityType === this.todoInfo.priority)
       if (type) return type.value
       return ''
+    },
+  },
+  methods: {
+    deleteTodo() {
+      this.$store.commit('Todo/deleteTodo', this.index)
     }
   }
 }

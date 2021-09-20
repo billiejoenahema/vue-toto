@@ -33,7 +33,18 @@ const mutations = {
   },
   addNewTodo(state) {
     state.todoList.push(state.newTodo)
-  }
+  },
+  deleteTodo(state, index) {
+    const newTodo = []
+    if(!confirm('削除してもよろしいですか？')) return
+    state.todoList.forEach((todo, idx) => {
+      if(index !== idx) {
+        newTodo.push(todo)
+      }
+      state.todoList = newTodo
+    })
+
+  },
 }
 
 export default {

@@ -5,6 +5,7 @@
         v-for="(todoInfo, idx) in todoList"
         :key="idx"
         :todoInfo="todoInfo"
+        :index="idx"
       />
     </div>
   </div>

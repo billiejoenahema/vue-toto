@@ -17,7 +17,8 @@ const state = {
   todoList: []
 }
 const getters = {
-  newTodo : (state) => state.newTodo,
+  newTodo: (state) => state.newTodo,
+  todoList: (state) => state.todoList,
 
 }
 const mutations = {

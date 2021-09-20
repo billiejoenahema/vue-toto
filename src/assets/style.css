@@ -20,7 +20,8 @@
   cursor: pointer;
 }
 .main-content {
-  width: 50%;
+  width: 90%;
+  max-width: 800px;
   height: 100vh;
   margin: 90px auto 0;
 }
@@ -69,17 +70,18 @@
   line-height: 30px;
   cursor: pointer;
 }
-.round-btn {
+.delete-btn {
+  border: 1px solid red;
+  background-color: lightcoral;
+}
+.edit-btn {
   border: 1px solid green;
-  border-radius: 50px;
-  text-align: center;
   background-color: #42b983;
 }
-.del-btn {
-  border: 1px solid red;
+
+.round-btn {
   border-radius: 50px;
   text-align: center;
-  background-color: lightcoral;
 }
 .round-btn:hover {
   cursor: pointer;

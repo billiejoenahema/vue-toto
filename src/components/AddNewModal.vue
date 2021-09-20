@@ -14,7 +14,7 @@
         </select>
       </div>
       <div class="btn-wrapper">
-        <button class="">確定</button>
+        <button @click="addTodo" :disabled="isDisabled">確定</button>
       </div>
     </div>
   </div>
@@ -22,19 +22,49 @@
 
 <script>
 import {priorityTypes} from '../utilities.js'
+import {mapGetters} from 'vuex'
 
 export default {
   data() {
     return {
       priorityTypes: priorityTypes,
-      title: '',
-      priority: 2
     }
   },
   methods: {
     closeModal() {
       this.$emit('closeModal')
-    }
+    },
+    addTodo() {
+      this.$store.commit('Todo/addNewTodo')
+      this.$store.commit('Todo/initTodo')
+      this.closeModal()
+    },
+  },
+  computed: {
+    ...mapGetters({
+      newTodo: 'Todo/newTodo',
+    }),
+    isDisabled() {
+      // タイトルが入力されていなければボタンを無効にする
+      return this.title === ''
+    },
+    title: {
+      get() {
+        return this.newTodo.title
+      },
+      set(value) {
+        this.$store.commit('Todo/setTitle', value)
+      }
+    },
+    priority: {
+      get() {
+        return this.newTodo.priority
+      },
+      set(value) {
+        this.$store.commit('Todo/setPriority', value)
+      }
+    },
+
   }
 }
 </script>

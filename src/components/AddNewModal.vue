@@ -14,57 +14,63 @@
         </select>
       </div>
       <div class="btn-wrapper">
-        <button @click="addTodo" :disabled="isDisabled">確定</button>
+        <button v-if="isEdit" @click="editTodo" :disabled="isDisabled">更新</button>
+        <button v-else @click="addTodo" :disabled="isDisabled">確定</button>
       </div>
     </div>
   </div>
 </template>
 
 <script>
-import {priorityTypes} from '../utilities.js'
-import {mapGetters} from 'vuex'
-
+import { priorityTypes } from '../utilities.js'
+import { mapGetters } from 'vuex'
 export default {
   data() {
     return {
-      priorityTypes: priorityTypes,
-    }
+      priorityTypes,
+      isEdit: false,
+    };
   },
-  methods: {
-    closeModal() {
-      this.$emit('closeModal')
-    },
-    addTodo() {
-      this.$store.commit('Todo/addNewTodo')
-      this.$store.commit('Todo/initTodo')
-      this.closeModal()
-    },
+  mounted() {
+    this.isEdit = !!this.newTodo.title
   },
   computed: {
     ...mapGetters({
       newTodo: 'Todo/newTodo',
     }),
     isDisabled() {
-      // タイトルが入力されていなければボタンを無効にする
-      return this.title === ''
+      return (this.title === '')
     },
     title: {
       get() {
         return this.newTodo.title
       },
       set(value) {
-        this.$store.commit('Todo/setTitle', value)
-      }
+        this.$store.commit('Todo/setNewTodoTitle', value)
+      },
     },
     priority: {
       get() {
         return this.newTodo.priority
       },
       set(value) {
-        this.$store.commit('Todo/setPriority', value)
-      }
+        this.$store.commit('Todo/setNewTodoPriority', value)
+      },
     },
-
-  }
+  },
+  methods: {
+    closeModal() {
+      this.$store.commit('Todo/initNewTodo')
+      this.$emit('closeModal')
+    },
+    addTodo() {
+      this.$store.commit('Todo/addNewTodo')
+      this.closeModal()
+    },
+    updateTodo() {
+      this.$store.commit('Todo/updateTodo')
+      this.closeModal()
+    },
+  },
 }
 </script>

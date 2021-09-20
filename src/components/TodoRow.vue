@@ -4,18 +4,18 @@
       <span>{{todoInfo.title}}</span>
     </div>
     <div class="priority" >
-      <span>{{priority}}</span>
+      <span>{{priorityType}}</span>
     </div>
     <div class="is-done" >
-      <select>
-        <option v-for="(process, idx) in processType"
+      <select v-model="processType" >
+        <option v-for="(type, idx) in processType"
         :key="idx"
-        :value="process.status">
-        {{process.value}}
+        :value="type.status">
+        {{type.value}}
         </option>
       </select>
     </div>
-    <div class="edit edit-btn round-btn" >
+    <div  @click="edit" class="edit edit-btn round-btn" >
       <span>編集</span>
     </div>
     <div @click="deleteTodo" class="delete delete-btn round-btn" >
@@ -31,29 +31,43 @@ export default {
   props: {
     todoInfo: {
       type: Object,
-      repuired: true,
+      required: true,
     },
     index: {
       type: Number,
       required: true,
-    }
+    },
   },
   data() {
     return {
-      processType: processTypes,
-    }
+      processTypes: processTypes,
+    };
   },
   computed: {
-    priority() {
-      const type = priorityTypes.find((item) => item.priorityType === this.todoInfo.priority)
-      if (type) return type.value
-      return ''
+    priorityType() {
+      return priorityTypes.find(
+        (type) => type.priorityType === this.todoInfo.priority
+      ).value;
+    },
+    processType: {
+      get() {
+        return this.todoInfo.processType;
+      },
+      set(value) {
+        this.$store.commit('Todo/updateStatus', {
+          status: value,
+          idx: this.index,
+        });
+      },
     },
   },
   methods: {
+    edit() {
+      this.$store.commit('Todo/editTodo', this.index);
+    },
     deleteTodo() {
-      this.$store.commit('Todo/deleteTodo', this.index)
-    }
-  }
+      this.$store.commit('Todo/deleteTodo', this.index);
+    },
+  },
 }
 </script>

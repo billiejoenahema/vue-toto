@@ -3,29 +3,31 @@
     <div class="app-name-wrapper">
       <span>Todo App</span>
     </div>
-    <div class="add-new" @click="newPost" >新規作成</div>
-    <AddNewModal @closeModal="closeModal" v-if="isShowModal" />
+    <div class="add-new" @click="showAddNewModal" >新規作成</div>
+    <AddNewModal @closeModal="hideAddNewModal" v-if="shouldShowModal" />
   </div>
 </template>
 
 <script>
 import AddNewModal from './AddNewModal.vue'
+import {mapGetters} from 'vuex'
+
 export default {
   components: {
-    AddNewModal
+    AddNewModal,
   },
-  data() {
-    return {
-      isShowModal: false
-    }
+  computed: {
+    ...mapGetters({
+      shouldShowModal: 'Todo/showAddNewModal',
+    }),
   },
   methods: {
-    newPost: function() {
-      this.isShowModal = true
+    showAddNewModal() {
+      this.$store.commit('Todo/toggleShowModal', true);
     },
-    closeModal: function() {
-      this.isShowModal = false
-    }
+    hideAddNewModal() {
+      this.$store.commit('Todo/toggleShowModal', false);
+    },
   },
 }
 </script>

@@ -1,54 +1,70 @@
-const initialTodo = () => {
-  return {
-    newTodo: {
-      title: '',
-      processType: 1,
-      priority: 2
-    }
-  }
+const initialNewTodoState = {
+  newTodo: {
+    title: '',
+    processType: 1,
+    priority: 1,
+  },
 }
 
 const state = {
   newTodo: {
     title: '',
-    process: 1,
-    priority: 2,
+    processType: 1,
+    priority: 1,
   },
-  todoList: []
+  todoList: [],
+  showAddNewModal: false,
+  editTargetIndex: 0,
 }
+
 const getters = {
   newTodo: (state) => state.newTodo,
   todoList: (state) => state.todoList,
-
+  showAddNewModal: (state) => state.showAddNewModal,
 }
+
 const mutations = {
-  initTodo(state) {
-    Object.assign(state, initialTodo())
+  initNewTodo(state) {
+    state.newTodo = JSON.parse(JSON.stringify(initialNewTodoState.newTodo))
   },
-  setTitle(state, title) {
+  toggleShowModal(state, isShow) {
+    state.showAddNewModal = isShow
+  },
+  setNewTodoTitle(state, title) {
     state.newTodo.title = title
   },
-  setPriority(state, priority) {
+  setNewTodoPriority(state, priority) {
     state.newTodo.priority = priority
   },
   addNewTodo(state) {
     state.todoList.push(state.newTodo)
   },
-  deleteTodo(state, index) {
-    const newTodo = []
-    if(!confirm('削除してもよろしいですか？')) return
-    state.todoList.forEach((todo, idx) => {
-      if(index !== idx) {
-        newTodo.push(todo)
-      }
-      state.todoList = newTodo
+  updateStatus(state, { status, idx }) {
+    const target = state.todoList[idx]
+    target.processType = status
+  },
+  todoSort(state, sortKey) {
+    state.todoList.sort((a, b) => {
+      if (a[sortKey] < b[sortKey]) return -1
+      if (a[sortKey] > b[sortKey]) return 1
     })
-
+  },
+  editTodo(state, index) {
+    const editTarget = state.todoList[index]
+    state.newTodo = { ...editTarget }
+    state.showAddNewModal = true
+    state.editTargetIndex = index
+  },
+  updateTodo(state) {
+    state.todoList.splice(state.editTargetIndex, 1, state.newTodo)
+  },
+  deleteTodo(state, index) {
+    state.todoList = state.todoList.filter((todo, idx) => index !== idx)
   },
 }
 
 export default {
-  namespaced : true,
+  namespaced: true,
   state,
   getters,
   mutations,

@@ -1,22 +1,14 @@
+<script setup>
+import TheHeader from './components/TheHeader.vue'
+import TodoList from './pages/TodoList.vue'
+</script>
+
 <template>
-  <Header />
+  <TheHeader />
   <div class="main-content">
-    <Todo />
+    <TodoList />
   </div>
 </template>
-
-<script>
-import Header from './components/Header.vue'
-import Todo from './components/Todo.vue'
-
-export default {
-  ame: 'App',
-  components: {
-    Header,
-    Todo,
-  }
-}
-</script>
 
 <style>
   @import 'assets/style.css'

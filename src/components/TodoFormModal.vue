@@ -1,21 +1,30 @@
 <script setup>
-import { defineEmits, defineProps } from 'vue';
+import { defineEmits, defineProps, reactive } from 'vue';
+import store from '../store/index.js';
 import { priorityTypes } from '../utilities.js';
 
 const props = defineProps({
-  isEdit: Boolean,
+  isEdit: {
+    type: Boolean,
+    required: false,
+  },
 });
 const emit = defineEmits(['hideTodoFormModal']);
-const newTodo = {
+const todo = reactive({
   title: '',
   processType: 1,
   priority: 1,
-};
+});
 
 const closeModal = () => {
   emit('hideTodoFormModal');
 };
-const addTodo = () => {
+const submitTodo = () => {
+  if (props.isEdit) {
+    store.dispatch('Todo/updateTodo', todo);
+  } else {
+    store.dispatch('Todo/postTodo', todo);
+  }
   closeModal();
 };
 </script>
@@ -25,11 +34,11 @@ const addTodo = () => {
     <div class="input-area">
       <div>
         <label for="titleInput">タイトル</label>
-        <input v-model="newTodo.title" type="text" id="titleInput" />
+        <input v-model="todo.title" type="text" id="titleInput" />
       </div>
       <div>
         <label for="priorityType">優先度</label>
-        <select v-model="newTodo.priority" id="priorityType">
+        <select v-model="todo.priority" id="priorityType">
           <option
             v-for="(type, idx) in priorityTypes"
             :key="idx"
@@ -40,14 +49,9 @@ const addTodo = () => {
         </select>
       </div>
       <div class="btn-wrapper">
-        <button
-          v-if="props.isEdit"
-          @click="editTodo"
-          :disabled="!newTodo.title"
-        >
-          更新
+        <button @click="submitTodo" :disabled="!todo.title">
+          {{ isEdit ? '更新' : '確定' }}
         </button>
-        <button v-else @click="addTodo" :disabled="!newTodo.title">確定</button>
       </div>
     </div>
   </div>

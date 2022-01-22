@@ -24,8 +24,12 @@ const getters = {
 };
 
 const actions = {
-  addNewTodo({ commit }, data) {
-    commit('addNewTodo', data);
+  postTodo({ commit }, data) {
+    console.log(data);
+    commit('postTodo', data);
+  },
+  updateTodo({ commit }, data) {
+    commit('updateTodo', data);
   },
 };
 
@@ -42,7 +46,7 @@ const mutations = {
   setNewTodoPriority(state, priority) {
     state.newTodo.priority = priority;
   },
-  addNewTodo(state, data) {
+  postTodo(state, data) {
     state.todoList.push(data);
   },
   updateStatus(state, { status, idx }) {

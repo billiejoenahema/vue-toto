@@ -34,20 +34,7 @@ const getters = {
   },
 };
 
-const actions = {
-  postTodo({ commit }, data) {
-    commit('postTodo', data);
-  },
-  updateTodo({ commit }, data) {
-    commit('updateTodo', data);
-  },
-  showModal({ commit }) {
-    commit('showModal');
-  },
-  closeModal({ commit }) {
-    commit('closeModal');
-  },
-};
+const actions = {};
 
 const mutations = {
   initNewTodo(state) {
@@ -61,9 +48,6 @@ const mutations = {
   },
   setNewTodoPriority(state, priority) {
     state.newTodo.priority = priority;
-  },
-  postTodo(state, data) {
-    state.todoList.push(data);
   },
   updateProcessTypeStatus(state, { status, index }) {
     const target = state.todoList[index];
@@ -80,6 +64,9 @@ const mutations = {
     state.newTodo = { ...editTarget };
     state.showAddNewModal = true;
     state.editTargetIndex = index;
+  },
+  postTodo(state, data) {
+    state.todoList.push(data);
   },
   updateTodo(state) {
     state.todoList.splice(state.editTargetIndex, 1, state.newTodo);

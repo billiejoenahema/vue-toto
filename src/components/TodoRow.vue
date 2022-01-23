@@ -24,10 +24,10 @@ const onChangeProcessType = () => {
   });
 };
 const editTodo = () => {
-  store.dispatch('Todo/showModal');
+  store.commit('Todo/showModal');
 };
 const deleteTodo = () => {
-  store.dispatch('Todo/deleteTodo', props.todoInfo);
+  store.commit('Todo/deleteTodo', props.todoInfo);
 };
 </script>
 

@@ -5,7 +5,7 @@ import store from '../store';
 
 const isShowModal = computed(() => store.getters['Todo/isShowModal']);
 const showTodoFormModal = () => {
-  store.dispatch('Todo/showModal');
+  store.commit('Todo/showModal');
 };
 </script>
 

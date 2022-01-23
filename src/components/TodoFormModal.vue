@@ -16,13 +16,13 @@ const todo = reactive({
 });
 
 const closeModal = () => {
-  store.dispatch('Todo/closeModal');
+  store.commit('Todo/closeModal');
 };
 const submitTodo = () => {
   if (props.isEdit) {
-    store.dispatch('Todo/updateTodo', todo);
+    store.commit('Todo/updateTodo', todo);
   } else {
-    store.dispatch('Todo/postTodo', todo);
+    store.commit('Todo/postTodo', todo);
   }
   closeModal();
 };

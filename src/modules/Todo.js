@@ -1,3 +1,9 @@
+const priorityTypes = [
+  { type: 3, value: '高' },
+  { type: 2, value: '中' },
+  { type: 1, value: '低' },
+];
+
 const initialNewTodoState = {
   newTodo: {
     title: '',
@@ -15,21 +21,31 @@ const state = {
   todoList: [],
   showAddNewModal: false,
   editTargetIndex: 0,
+  isShowModal: false,
 };
 
 const getters = {
   newTodo: (state) => state.newTodo,
   todoList: (state) => state.todoList,
   showAddNewModal: (state) => state.showAddNewModal,
+  isShowModal: (state) => state.isShowModal,
+  priorityValue: () => (t) => {
+    return priorityTypes.find((o) => o.type === t).value;
+  },
 };
 
 const actions = {
   postTodo({ commit }, data) {
-    console.log(data);
     commit('postTodo', data);
   },
   updateTodo({ commit }, data) {
     commit('updateTodo', data);
+  },
+  showModal({ commit }) {
+    commit('showModal');
+  },
+  closeModal({ commit }) {
+    commit('closeModal');
   },
 };
 
@@ -49,8 +65,8 @@ const mutations = {
   postTodo(state, data) {
     state.todoList.push(data);
   },
-  updateStatus(state, { status, idx }) {
-    const target = state.todoList[idx];
+  updateProcessTypeStatus(state, { status, index }) {
+    const target = state.todoList[index];
     target.processType = status;
   },
   todoSort(state, sortKey) {
@@ -70,6 +86,12 @@ const mutations = {
   },
   deleteTodo(state, index) {
     state.todoList = state.todoList.filter((todo, idx) => index !== idx);
+  },
+  showModal(state) {
+    state.isShowModal = true;
+  },
+  closeModal(state) {
+    state.isShowModal = false;
   },
 };
 

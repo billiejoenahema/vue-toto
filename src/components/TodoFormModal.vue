@@ -1,5 +1,5 @@
 <script setup>
-import { defineEmits, defineProps, reactive } from 'vue';
+import { defineProps, reactive } from 'vue';
 import store from '../store/index.js';
 import { priorityTypes } from '../utilities.js';
 
@@ -9,7 +9,6 @@ const props = defineProps({
     required: false,
   },
 });
-const emit = defineEmits(['hideTodoFormModal']);
 const todo = reactive({
   title: '',
   processType: 1,
@@ -17,7 +16,7 @@ const todo = reactive({
 });
 
 const closeModal = () => {
-  emit('hideTodoFormModal');
+  store.dispatch('Todo/closeModal');
 };
 const submitTodo = () => {
   if (props.isEdit) {

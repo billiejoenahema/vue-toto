@@ -67,6 +67,11 @@ const mutations = {
   },
   postTodo(state, data) {
     state.todoList.push(data);
+    // localStorage に保存する
+    localStorage.setItem(
+      'todoList',
+      JSON.stringify(state.todoList, undefined, 1)
+    );
   },
   updateTodo(state) {
     state.todoList.splice(state.editTargetIndex, 1, state.newTodo);

@@ -47,7 +47,7 @@ const mutations = {
   },
   postTodo(state, data) {
     state.todoList.push(data);
-    // localStorage に保存する
+    // localStorage の Todo リストを更新する
     localStorage.setItem(
       'todoList',
       JSON.stringify(state.todoList, undefined, 1)
@@ -57,7 +57,13 @@ const mutations = {
     state.todoList.splice(state.editTargetIndex, 1, state.newTodo);
   },
   deleteTodo(state, index) {
+    // 指定した Todo をリストから取り除く
     state.todoList = state.todoList.filter((todo, idx) => index !== idx);
+    // localStorage の Todo リストを更新する
+    localStorage.setItem(
+      'todoList',
+      JSON.stringify(state.todoList, undefined, 1)
+    );
   },
   showModal(state) {
     state.isShowModal = true;

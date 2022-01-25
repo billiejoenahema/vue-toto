@@ -1,14 +1,15 @@
 <script setup>
 import { computed, defineProps, ref } from 'vue';
 import { useStore } from 'vuex';
-import { processTypes } from '../utilities.js';
+import { processTypes } from '../utilities';
 
 const store = useStore();
 const props = defineProps({
-  todoInfo: {
+  todo: {
     title: '',
     priority: 1,
     processType: 1,
+    index: 1,
   },
   index: {
     type: Number,
@@ -16,28 +17,30 @@ const props = defineProps({
   },
 });
 const priorityValue = computed(() => store.getters['Todo/priorityValue']);
-const processType = ref(props.todoInfo.processType);
+const processType = ref(props.todo.processType);
 const onChangeProcessType = () => {
   store.commit('Todo/updateProcessTypeStatus', {
-    status: props.todoInfo.processType,
+    status: props.todo.processType,
     index: props.index,
   });
 };
-const editTodo = () => {
+const showModal = () => {
   store.commit('Todo/showModal');
 };
 const deleteTodo = () => {
-  store.commit('Todo/deleteTodo', props.todoInfo);
+  if (alert('削除しますか？')) {
+    store.commit('Todo/deleteTodo', props.index);
+  }
 };
 </script>
 
 <template>
   <div class="todo-row">
     <div class="title-wrapper over-flow">
-      <span>{{ todoInfo.title }}</span>
+      <span>{{ todo.title }}</span>
     </div>
     <div class="priority">
-      <span>{{ priorityValue(todoInfo.priority) }}</span>
+      <span>{{ priorityValue(todo.priority) }}</span>
     </div>
     <div class="is-done">
       <select v-model="processType" @onChange="onChangeProcessType">
@@ -50,7 +53,7 @@ const deleteTodo = () => {
         </option>
       </select>
     </div>
-    <div @click="editTodo" class="edit edit-btn round-btn">
+    <div @click="showModal" class="edit edit-btn round-btn">
       <span>編集</span>
     </div>
     <div @click="deleteTodo" class="delete delete-btn round-btn">

@@ -13,7 +13,7 @@ const todoList = computed(() => store.getters['Todo/todoList']);
     <TodoRow
       v-for="(todo, idx) in todoList"
       :key="idx"
-      :todoInfo="todo"
+      :todo="todo"
       :index="idx"
     />
   </div>

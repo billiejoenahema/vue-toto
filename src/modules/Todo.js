@@ -29,14 +29,23 @@ const getters = {
   todoList: (state) => state.todoList,
   showAddNewModal: (state) => state.showAddNewModal,
   isShowModal: (state) => state.isShowModal,
-  priorityValue: () => (t) => {
-    return priorityTypes.find((o) => o.type === t).value;
+  priorityValue: () => (type) => {
+    return priorityTypes.find((o) => o.type === type).value;
   },
 };
 
-const actions = {};
+const actions = {
+  get({ commit }) {
+    const response = JSON.parse(localStorage.getItem('todoList'));
+    commit('setTodoList', response);
+  },
+};
 
 const mutations = {
+  setTodoList(state, res) {
+    state.todoList = [];
+    state.todoList = res;
+  },
   initNewTodo(state) {
     state.newTodo = JSON.parse(JSON.stringify(initialNewTodoState.newTodo));
   },

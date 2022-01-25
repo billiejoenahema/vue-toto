@@ -4,6 +4,7 @@ import { useStore } from 'vuex';
 import TodoRow from '../components/TodoRow';
 
 const store = useStore();
+store.dispatch('Todo/get');
 const todoList = computed(() => store.getters['Todo/todoList']);
 </script>
 

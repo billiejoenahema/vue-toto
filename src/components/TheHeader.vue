@@ -1,12 +1,9 @@
 <script setup>
-import TodoFormModal from './TodoFormModal.vue';
-import { computed } from 'vue';
-import store from '../store';
+import TodoFormModalNew from './TodoFormModalNew';
+import { ref } from 'vue';
 
-const isShowModal = computed(() => store.getters['Todo/isShowModal']);
-const showTodoFormModal = () => {
-  store.commit('Todo/showModal');
-};
+const isShowModal = ref(false);
+const closeModal = () => isShowModal.value = false;
 </script>
 
 <template>
@@ -14,7 +11,7 @@ const showTodoFormModal = () => {
     <div class="app-name-wrapper">
       <span>Todo App</span>
     </div>
-    <div class="add-new" @click="showTodoFormModal">新規作成</div>
-    <TodoFormModal v-if="isShowModal" />
+    <div class="add-new" @click="isShowModal = true">新規作成</div>
+    <TodoFormModalNew v-if="isShowModal" :closeModal="closeModal" />
   </div>
 </template>

@@ -4,27 +4,20 @@ import store from '../store/index.js';
 import { priorityTypes } from '../utilities.js';
 
 const props = defineProps({
-  isEdit: {
-    type: Boolean,
-    required: false,
+  closeModal: {
+    type: Function,
+    required: true,
   },
 });
-const todo = reactive({
+const newTodo = reactive({
   title: '',
   processType: 1,
   priority: 1,
 });
 
-const closeModal = () => {
-  store.commit('Todo/closeModal');
-};
 const submitTodo = () => {
-  if (props.isEdit) {
-    store.commit('Todo/updateTodo', todo);
-  } else {
-    store.commit('Todo/postTodo', todo);
-  }
-  closeModal();
+  store.commit('Todo/postTodo', newTodo);
+  props.closeModal();
 };
 </script>
 
@@ -33,11 +26,11 @@ const submitTodo = () => {
     <div class="input-area">
       <div>
         <label for="titleInput">タイトル</label>
-        <input v-model="todo.title" type="text" id="titleInput" />
+        <input v-model="newTodo.title" type="text" id="titleInput" />
       </div>
       <div>
         <label for="priorityType">優先度</label>
-        <select v-model="todo.priority" id="priorityType">
+        <select v-model="newTodo.priority" id="priorityType">
           <option
             v-for="(type, idx) in priorityTypes"
             :key="idx"
@@ -48,9 +41,7 @@ const submitTodo = () => {
         </select>
       </div>
       <div class="btn-wrapper">
-        <button @click="submitTodo" :disabled="!todo.title">
-          {{ isEdit ? '更新' : '確定' }}
-        </button>
+        <button @click="submitTodo" :disabled="!newTodo.title">確定</button>
       </div>
     </div>
   </div>

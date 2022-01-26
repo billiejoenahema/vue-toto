@@ -4,6 +4,10 @@ import store from '../store/index.js';
 import { priorityTypes } from '../utilities.js';
 
 const props = defineProps({
+  closeModal: {
+    type: Function,
+    required: true,
+  },
   currentTodo: {
     type: Object,
     required: true,
@@ -16,23 +20,19 @@ const todo = reactive({
   index: props.currentTodo.index,
 });
 
-const closeModal = () => {
-  store.commit('Todo/closeModal');
-};
 const submitTodo = () => {
   if (props.isEdit) {
     store.commit('Todo/updateTodo', todo);
   } else {
     store.commit('Todo/postTodo', todo);
   }
-  closeModal();
+  props.closeModal();
 };
 </script>
 
 <template>
   <div class="add-new-area" @click.self="closeModal">
     <div class="input-area">
-      <!-- <div>close</div> -->
       <div>
         <label for="titleInput">タイトル</label>
         <input v-model="todo.title" type="text" id="titleInput" />
@@ -50,9 +50,7 @@ const submitTodo = () => {
         </select>
       </div>
       <div class="btn-wrapper">
-        <button @click="submitTodo" :disabled="!todo.title">
-          {{ isEdit ? '更新' : '確定' }}
-        </button>
+        <button @click="submitTodo" :disabled="!todo.title">更新</button>
       </div>
     </div>
   </div>

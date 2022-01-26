@@ -2,6 +2,7 @@
 import { computed, defineProps, ref } from 'vue';
 import { useStore } from 'vuex';
 import { processTypes } from '../utilities';
+import TodoFormModalEdit from './TodoFormModalEdit';
 
 const store = useStore();
 const props = defineProps({
@@ -24,9 +25,8 @@ const onChangeProcessType = () => {
     index: props.index,
   });
 };
-const showModal = () => {
-  store.commit('Todo/showModal');
-};
+const isShowModal = ref(false);
+const closeModal = () => (isShowModal.value = false);
 const deleteTodo = () => {
   if (alert('削除しますか？')) {
     store.commit('Todo/deleteTodo', props.index);
@@ -53,11 +53,17 @@ const deleteTodo = () => {
         </option>
       </select>
     </div>
-    <div @click="showModal" class="edit edit-btn round-btn">
+    <div @click="isShowModal = true" class="edit edit-btn round-btn">
       <span>編集</span>
     </div>
     <div @click="deleteTodo" class="delete delete-btn round-btn">
       <span>削除</span>
     </div>
   </div>
+  <TodoFormModalEdit
+    v-if="isShowModal"
+    :closeModal="closeModal"
+    :currentTodo="todo"
+    :index="index"
+  />
 </template>

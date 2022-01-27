@@ -33,11 +33,12 @@ const submitTodo = () => {
 <template>
   <div class="add-new-area" @click.self="closeModal">
     <div class="input-area">
-      <div>
+      <ion-icon class="close" @click="closeModal" name="close"></ion-icon>
+      <div class="input-row">
         <label for="titleInput">タイトル</label>
         <input v-model="todo.title" type="text" id="titleInput" />
       </div>
-      <div>
+      <div class="input-row">
         <label for="priorityType">優先度</label>
         <select v-model="todo.priority" id="priorityType">
           <option
@@ -49,8 +50,10 @@ const submitTodo = () => {
           </option>
         </select>
       </div>
-      <div class="btn-wrapper">
-        <button @click="submitTodo" :disabled="!todo.title">更新</button>
+      <div>
+        <button class="submit" @click="submitTodo" :disabled="!todo.title">
+          更新
+        </button>
       </div>
     </div>
   </div>

@@ -19,6 +19,12 @@
   color: black;
   cursor: pointer;
 }
+.close {
+  height: 1.6rem;
+  width: 1.6rem;
+  margin-left: auto;
+  cursor: pointer;
+}
 .main-content {
   width: 90%;
   max-width: 800px;
@@ -78,7 +84,6 @@
   border: 1px solid green;
   background-color: #42b983;
 }
-
 .round-btn {
   border-radius: 50px;
   text-align: center;
@@ -98,21 +103,12 @@
 }
 .input-area {
   margin: 0 auto;
-  height: 180px;
-  width: 500px;
+  max-width: 500px;
   background-color: white;
   border-radius: 10px;
-  padding: 100px 30px 30px;
-}
-#titleInput {
-  margin-left: 30px;
-  width: 300px;
-  outline: none;
-}
-#priorityType {
-  margin-left: 45px;
-  width: 200px;
-  outline: none;
+  padding: 32px;
+  display: flex;
+  flex-direction: column;
 }
 .input-area div {
   height: 40px;
@@ -132,9 +128,21 @@
 .input-area div:nth-child(2) {
   margin-top: 30px;
 }
+.input-row {
+  width: 100%;
+  display: flex;
+}
+.input-row > label {
+  display: inline-flex;
+  width: 25%;
+}
+.input-row > input,
+.input-row > select {
+  width: 75%;
+}
 .btn-wrapper {
-  float: right;
-  margin-right: 19%;
+  display: flex;
+  justify-content: flex-end;
 }
 .btn-wrapper button {
   height: 35px;
@@ -143,6 +151,7 @@
   color: white;
   border: 1px solid lightblue;
   border-radius: 10px;
+  cursor: pointer;
 }
 .btn-wrapper button:disabled {
   border: 1px solid darkgray;
@@ -161,4 +170,7 @@
   outline: none;
   border: darkgray 1px solid;
   border-radius: 5px;
+}
+button .submit {
+  margin-left: auto;
 }

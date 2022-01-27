@@ -24,6 +24,7 @@ const submitTodo = () => {
 <template>
   <div class="add-new-area" @click.self="closeModal">
     <div class="input-area">
+      <ion-icon @click="closeModal" name="close-outline"></ion-icon>
       <div>
         <label for="titleInput">タイトル</label>
         <input v-model="newTodo.title" type="text" id="titleInput" />

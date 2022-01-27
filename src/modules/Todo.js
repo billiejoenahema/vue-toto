@@ -33,7 +33,7 @@ const actions = {
 const mutations = {
   setTodoList(state, res) {
     state.todoList = [];
-    state.todoList = res;
+    state.todoList = res ?? [];
   },
   updateProcessTypeStatus(state, { status, index }) {
     const target = state.todoList[index];
@@ -45,16 +45,23 @@ const mutations = {
       if (a[sortKey] > b[sortKey]) return 1;
     });
   },
-  postTodo(state, data) {
-    state.todoList.push(data);
+  postTodo(state, newTodo) {
+    state.todoList.push(newTodo);
     // localStorage の Todo リストを更新する
     localStorage.setItem(
       'todoList',
       JSON.stringify(state.todoList, undefined, 1)
     );
   },
-  updateTodo(state) {
-    state.todoList.splice(state.editTargetIndex, 1, state.newTodo);
+  updateTodo(state, todo, index) {
+    console.log(todo);
+    console.log(index);
+    state.todoList.splice(index, 1, todo);
+    // localStorage の Todo リストを更新する
+    localStorage.setItem(
+      'todoList',
+      JSON.stringify(state.todoList, undefined, 1)
+    );
   },
   deleteTodo(state, index) {
     // 指定した Todo をリストから取り除く

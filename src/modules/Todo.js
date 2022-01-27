@@ -53,9 +53,7 @@ const mutations = {
       JSON.stringify(state.todoList, undefined, 1)
     );
   },
-  updateTodo(state, todo, index) {
-    console.log(todo);
-    console.log(index);
+  updateTodo(state, { todo, index }) {
     state.todoList.splice(index, 1, todo);
     // localStorage の Todo リストを更新する
     localStorage.setItem(

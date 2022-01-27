@@ -17,15 +17,13 @@ const todo = reactive({
   title: props.currentTodo.title,
   processType: props.currentTodo.processType,
   priority: props.currentTodo.priority,
-  index: props.currentTodo.index,
 });
 
 const submitTodo = () => {
-  if (props.isEdit) {
-    store.commit('Todo/updateTodo', todo);
-  } else {
-    store.commit('Todo/postTodo', todo);
-  }
+  store.commit('Todo/updateTodo', {
+    todo,
+    index: props.currentTodo.index,
+  });
   props.closeModal();
 };
 </script>
@@ -50,7 +48,7 @@ const submitTodo = () => {
           </option>
         </select>
       </div>
-      <div>
+      <div class="btn-wrapper">
         <button class="submit" @click="submitTodo" :disabled="!todo.title">
           更新
         </button>

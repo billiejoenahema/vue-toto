@@ -10,17 +10,22 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 0 1rem;
+  padding-left: 1rem;
 }
-.app-name-wrapper span {
-  height: 100%;
-}
+
 .add-new {
   height: 100%;
-  color: rgb(26, 26, 26);
-  cursor: pointer;
+  color: rgb(202, 202, 202);
+  font-size: 1rem;
   display: flex;
   align-items: center;
+  padding: 0 1rem;
+  background-color: rgb(31, 123, 153);
+}
+.add-new:hover {
+  cursor: pointer;
+  opacity: 0.9;
+  background-color: rgb(64, 135, 158);
 }
 .close {
   height: 1.6rem;

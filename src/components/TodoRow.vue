@@ -26,7 +26,9 @@ const changeProcessType = () => {
   });
 };
 const isShowModal = ref(false);
-const closeModal = () => (isShowModal.value = false);
+const closeModal = () => {
+  isShowModal.value = false;
+};
 const deleteTodo = () => {
   if (alert('削除しますか？')) {
     store.commit('Todo/deleteTodo', props.index);

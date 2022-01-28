@@ -1,23 +1,26 @@
+@import url('~simpledotcss/simple.min.css');
+
 * {
   margin: initial;
 }
 
 #header {
-  height: 68px;
-  background-color: lightblue;
+  height: 4rem;
+  background-color: rgb(31, 123, 153);
   display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 1rem;
 }
 .app-name-wrapper span {
-  height: 68px;
-  line-height: 68px;
-  margin-left: 30px;
+  height: 100%;
 }
 .add-new {
-  height: 68px;
-  line-height: 68px;
-  margin-left: 60%;
-  color: black;
+  height: 100%;
+  color: rgb(26, 26, 26);
   cursor: pointer;
+  display: flex;
+  align-items: center;
 }
 .close {
   height: 1.6rem;

@@ -9,7 +9,7 @@ body {
 
 #header {
   align-items: center;
-  background-color: rgb(31, 123, 153);
+  background-color: #6200ee;
   display: flex;
   font-size: 1.2rem;
   height: 4rem;
@@ -19,7 +19,7 @@ body {
 
 .add-new {
   align-items: center;
-  background-color: rgb(31, 123, 153);
+  background-color: #6200ee;
   color: rgb(202, 202, 202);
   display: flex;
   font-size: 1rem;
@@ -27,7 +27,7 @@ body {
   padding: 0 1rem;
 }
 .add-new:hover {
-  background-color: rgb(64, 135, 158);
+  background-color: #3700b3;
   cursor: pointer;
   opacity: 0.9;
 }
@@ -69,9 +69,8 @@ body {
 .is-done select {
   outline: none;
   border-radius: 50px;
-  width: 80px;
-  height: 30px;
-  padding: 2px;
+  font-size: 0.95rem;
+  width: 5rem;
 }
 .edit {
   margin-left: 30px;
@@ -89,12 +88,10 @@ body {
   cursor: pointer;
 }
 .delete-btn {
-  border: 1px solid red;
-  background-color: lightcoral;
+  background-color: #b00020;
 }
 .edit-btn {
-  border: 1px solid green;
-  background-color: #42b983;
+  background-color: #018786;
 }
 .round-btn {
   border-radius: 50px;

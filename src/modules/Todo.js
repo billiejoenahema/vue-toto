@@ -36,8 +36,12 @@ const mutations = {
     state.todoList = res ?? [];
   },
   updateProcessTypeStatus(state, { status, index }) {
-    const target = state.todoList[index];
-    target.processType = status;
+    state.todoList[index].processType = status;
+    // localStorage の Todo リストを更新する
+    localStorage.setItem(
+      'todoList',
+      JSON.stringify(state.todoList, undefined, 1)
+    );
   },
   todoSort(state, sortKey) {
     state.todoList.sort((a, b) => {

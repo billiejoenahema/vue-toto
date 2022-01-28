@@ -19,9 +19,9 @@ const props = defineProps({
 });
 const priorityValue = computed(() => store.getters['Todo/priorityValue']);
 const processType = ref(props.todo.processType);
-const onChangeProcessType = () => {
+const changeProcessType = () => {
   store.commit('Todo/updateProcessTypeStatus', {
-    status: props.todo.processType,
+    status: processType.value,
     index: props.index,
   });
 };
@@ -43,7 +43,7 @@ const deleteTodo = () => {
       <span>{{ priorityValue(todo.priority) }}</span>
     </div>
     <div class="is-done">
-      <select v-model="processType" @onChange="onChangeProcessType">
+      <select v-model="processType" @change="changeProcessType">
         <option
           v-for="(type, idx) in processTypes"
           :key="idx"

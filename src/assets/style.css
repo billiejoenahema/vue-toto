@@ -45,14 +45,12 @@ body {
 }
 .todo-row {
   display: grid;
-  grid-template-columns: 4.5fr 1fr 1.5fr 1.5fr 1.5fr;
+  grid-template-columns: 5fr 1fr 2fr 1.5fr 1.5fr;
   border-bottom: lightgray 1px solid;
   margin-right: auto;
   margin-bottom: 30px;
   padding: 0.5rem 0;
   align-items: center;
-}
-.title-wrapper {
 }
 .over-flow {
   overflow: hidden;

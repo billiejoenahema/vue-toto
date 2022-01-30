@@ -83,9 +83,6 @@ body {
   padding: 0.4rem;
   color: white;
 }
-button .submit {
-  margin-left: auto;
-}
 .round-btn {
   border-radius: 48px;
 }
@@ -109,19 +106,15 @@ button .submit {
   z-index: 100;
 }
 .modal {
-  margin: 0 auto;
-  max-width: 500px;
-  background-color: white;
-  border-radius: 10px;
-  padding: 32px;
   display: flex;
   flex-direction: column;
-}
-.modal div {
-  height: 40px;
+  max-width: 500px;
+  margin: 0 auto;
+  background-color: rgb(61, 61, 61);
+  border-radius: 10px;
+  padding: 32px;
 }
 .modal input {
-  height: 20px;
   border: 1px solid darkgray;
   border-radius: 5px;
   padding: 5px;
@@ -141,27 +134,25 @@ button .submit {
 }
 .input-row {
   width: 100%;
-  display: flex;
+  display: grid;
+  grid-template-columns: 1fr 3fr;
 }
-.input-row > label {
-  display: inline-flex;
-  width: 25%;
-}
-.input-row > input,
+.input-row > textarea,
 .input-row > select {
-  width: 75%;
+  width: 100%;
 }
 .btn-wrapper {
   display: flex;
   justify-content: flex-end;
 }
 .btn-wrapper button {
-  height: 35px;
+  height: 36px;
   width: 70px;
   background-color: dodgerblue;
   color: white;
   border: 1px solid lightblue;
   border-radius: 10px;
+  padding: 0;
   cursor: pointer;
 }
 .btn-wrapper button:disabled {

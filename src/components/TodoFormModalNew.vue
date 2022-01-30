@@ -22,8 +22,8 @@ const submitTodo = () => {
 </script>
 
 <template>
-  <div class="add-new-area" @click.self="closeModal">
-    <div class="input-area">
+  <div class="modal-wrapper" @click.self="closeModal">
+    <div class="modal">
       <ion-icon class="close" @click="closeModal" name="close"></ion-icon>
       <div class="input-row">
         <label for="titleInput">タイトル</label>

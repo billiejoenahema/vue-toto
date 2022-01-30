@@ -4,19 +4,23 @@
   margin: initial;
 }
 body {
-  font-size: 1rem;
+  font-size: 0.9rem;
+  display: flex;
 }
 
 #header {
-  align-items: center;
   background-color: #6200ee;
-  display: flex;
   font-size: 1.2rem;
   height: 4rem;
-  justify-content: space-between;
-  padding-left: 1rem;
 }
-
+.header-inner {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 100%;
+  width: 90%;
+  margin: 0 auto;
+}
 .add-new {
   align-items: center;
   background-color: #6200ee;
@@ -24,7 +28,6 @@ body {
   display: flex;
   font-size: 1rem;
   height: 100%;
-  padding: 0 1rem;
 }
 .add-new:hover {
   background-color: #3700b3;
@@ -41,7 +44,7 @@ body {
   width: 90%;
   max-width: 800px;
   height: 100vh;
-  margin: 90px auto 0;
+  margin: 5rem auto 0;
 }
 .todo-row {
   display: grid;
@@ -51,6 +54,7 @@ body {
   margin-bottom: 30px;
   padding: 0.5rem 0;
   align-items: center;
+  position: relative;
 }
 .over-flow {
   overflow: hidden;
@@ -61,48 +65,40 @@ body {
   text-align: center;
   margin-left: 16px;
 }
-.is-done {
+.process-type {
   align-items: center;
   margin-left: 16px;
 }
-.is-done select {
+.process-type select {
   width: 100%;
   outline: none;
   border-radius: 50px;
-  font-size: 0.95rem;
   margin: 0;
 }
-.edit {
-  color: white;
+.btn {
   display: flex;
+  justify-content: center;
+  align-items: center;
   margin-left: 16px;
   padding: 0.4rem;
-  justify-content: center;
-  align-items: center;
-}
-.delete {
-  display: flex;
-  margin-left: 16px;
-  padding: 0.5rem;
-  justify-content: center;
-  align-items: center;
   color: white;
-  cursor: pointer;
 }
-.delete-btn {
-  background-color: #b00020;
-}
-.edit-btn {
-  background-color: #018786;
+button .submit {
+  margin-left: auto;
 }
 .round-btn {
-  border-radius: 50px;
-  text-align: center;
+  border-radius: 48px;
 }
 .round-btn:hover {
   cursor: pointer;
 }
-.add-new-area {
+.edit {
+  background-color: #018786;
+}
+.delete {
+  background-color: #b00020;
+}
+.modal-wrapper {
   padding-top: 100px;
   position: absolute;
   top: 0;
@@ -112,7 +108,7 @@ body {
   background-color: rgba(0, 0, 0, 0.74);
   z-index: 100;
 }
-.input-area {
+.modal {
   margin: 0 auto;
   max-width: 500px;
   background-color: white;
@@ -121,22 +117,26 @@ body {
   display: flex;
   flex-direction: column;
 }
-.input-area div {
+.modal div {
   height: 40px;
 }
-.input-area input {
+.modal input {
   height: 20px;
   border: 1px solid darkgray;
   border-radius: 5px;
   padding: 5px;
 }
-#priorityType {
-  height: 30px;
-  border: 1px solid darkgray;
-  border-radius: 5px;
-  padding: 7px;
+.modal-todo-title-all {
+  position: absolute;
+  top: 2.5rem;
+  z-index: 100;
+  word-break: break-all;
+  padding: 1rem;
+  border-radius: 4px;
+  background: rgb(202, 202, 202);
+  color: rgba(0, 0, 0, 0.74);
 }
-.input-area div:nth-child(2) {
+.modal div:nth-child(2) {
   margin-top: 30px;
 }
 .input-row {
@@ -181,7 +181,4 @@ body {
   outline: none;
   border: darkgray 1px solid;
   border-radius: 5px;
-}
-button .submit {
-  margin-left: auto;
 }

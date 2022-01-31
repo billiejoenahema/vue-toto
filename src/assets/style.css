@@ -12,6 +12,9 @@ body {
   background-color: #6200ee;
   font-size: 1.2rem;
   height: 4rem;
+  position: sticky;
+  top: 0;
+  z-index: 99;
 }
 .header-inner {
   display: flex;
@@ -100,8 +103,8 @@ body {
   position: absolute;
   top: 0;
   left: 0;
-  width: 100%;
-  height: 100%;
+  width: 100vw;
+  height: 100vh;
   background-color: rgba(0, 0, 0, 0.74);
   z-index: 100;
 }
@@ -113,6 +116,7 @@ body {
   background-color: rgb(61, 61, 61);
   border-radius: 10px;
   padding: 32px;
+  font-size: 0.9rem;
 }
 .modal input {
   border: 1px solid darkgray;
@@ -140,6 +144,7 @@ body {
 .input-row > textarea,
 .input-row > select {
   width: 100%;
+  margin-bottom: 16px;
 }
 .btn-wrapper {
   display: flex;
@@ -158,18 +163,4 @@ body {
 .btn-wrapper button:disabled {
   border: 1px solid darkgray;
   background-color: darkgray;
-}
-.sort-conditions {
-  float: right;
-  margin-right: 20%;
-  margin-top: 30px;
-}
-.sort-conditions select {
-  padding: 5px;
-  height: 30px;
-  margin-left: 5px;
-  width: 150px;
-  outline: none;
-  border: darkgray 1px solid;
-  border-radius: 5px;
 }

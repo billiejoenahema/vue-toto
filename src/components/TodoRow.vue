@@ -57,8 +57,15 @@ const deleteTodo = async () => {
 </script>
 <template>
   <div class="todo-row">
+    <ion-icon
+      name="checkbox-outline"
+      v-if="todo.processType === 2"
+      class="check-mark"
+    ></ion-icon>
+    <ion-icon name="square-outline" v-else class="check-mark"></ion-icon>
     <div
       class="title-wrapper over-flow"
+      :class="{ isDone: todo.processType === 2 }"
       @mouseover="showTodoTitleAll"
       @mouseleave="hideTodoTitleAll"
     >

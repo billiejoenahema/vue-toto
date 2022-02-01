@@ -53,7 +53,7 @@ button {
 }
 .todo-row {
   display: grid;
-  grid-template-columns: 5fr 1fr 2fr 1.5fr 1.5fr;
+  grid-template-columns: 0.5fr 5fr 1fr 2fr 1.5fr 1.5fr;
   border-bottom: lightgray 1px solid;
   margin-right: auto;
   margin-bottom: 30px;
@@ -169,4 +169,11 @@ button {
 }
 .btn-wrapper .delete-submit {
   background-color: #b00020;
+}
+.isDone {
+  text-decoration: line-through;
+  color: rgb(61, 61, 61);
+}
+.check-mark {
+  font-size: 1.2rem;
 }

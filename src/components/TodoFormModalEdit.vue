@@ -12,6 +12,10 @@ const props = defineProps({
     type: Object,
     required: true,
   },
+  index: {
+    type: Number,
+    required: true,
+  },
 });
 const todo = reactive({
   title: props.currentTodo.title,
@@ -22,7 +26,7 @@ const todo = reactive({
 const submitTodo = () => {
   store.commit('Todo/updateTodo', {
     todo,
-    index: props.currentTodo.index,
+    index: props.index,
   });
   props.closeModal();
 };

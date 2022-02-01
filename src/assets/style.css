@@ -5,9 +5,11 @@
 }
 body {
   font-size: 0.9rem;
-  display: flex;
 }
 
+button {
+  font-size: 0.9rem;
+}
 #header {
   background-color: #6200ee;
   font-size: 1.2rem;
@@ -151,16 +153,20 @@ body {
   justify-content: flex-end;
 }
 .btn-wrapper button {
-  height: 36px;
-  width: 70px;
   background-color: dodgerblue;
   color: white;
-  border: 1px solid lightblue;
   border-radius: 10px;
-  padding: 0;
+  padding: 0.5rem 1rem;
   cursor: pointer;
 }
 .btn-wrapper button:disabled {
   border: 1px solid darkgray;
   background-color: darkgray;
+}
+.btn-wrapper .cancel-btn {
+  background-color: #8b8b8b;
+  margin-right: 3rem;
+}
+.btn-wrapper .delete-submit {
+  background-color: #b00020;
 }

@@ -49,13 +49,12 @@ const isShowModal = ref(false);
 const closeModal = () => {
   isShowModal.value = false;
 };
-const deleteTodo = () => {
-  if (alert('削除しますか？')) {
-    store.commit('Todo/deleteTodo', props.index);
-  }
+const isShowDeleteConfirmModal = ref(false);
+const deleteTodo = async () => {
+  await store.commit('Todo/deleteTodo', props.index);
+  isShowDeleteConfirmModal.value = false;
 };
 </script>
-
 <template>
   <div class="todo-row">
     <div
@@ -82,7 +81,7 @@ const deleteTodo = () => {
     <div @click="isShowModal = true" class="edit round-btn btn">
       <span>編集</span>
     </div>
-    <div @click="deleteTodo" class="delete round-btn btn">
+    <div @click="isShowDeleteConfirmModal = true" class="delete round-btn btn">
       <span>削除</span>
     </div>
     <TodoTitleTooltip
@@ -98,4 +97,24 @@ const deleteTodo = () => {
     :currentTodo="todo"
     :index="index"
   />
+  <div
+    v-if="isShowDeleteConfirmModal"
+    class="modal-wrapper"
+    @click="isShowDeleteConfirmModal = false"
+  >
+    <div class="modal">
+      <ion-icon
+        class="close"
+        @click="isShowDeleteConfirmModal = false"
+        name="close"
+      ></ion-icon>
+      <div>Todoを削除しますか？</div>
+      <div class="btn-wrapper">
+        <button class="cancel-btn" @click="isShowDeleteConfirmModal = false">
+          キャンセル
+        </button>
+        <button class="delete-submit" @click="deleteTodo">削除する</button>
+      </div>
+    </div>
+  </div>
 </template>

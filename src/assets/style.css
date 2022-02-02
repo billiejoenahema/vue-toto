@@ -5,6 +5,7 @@
 }
 body {
   font-size: 0.9rem;
+  grid-template-columns: 1fr min(100%, 100%) 1fr;
 }
 
 button {

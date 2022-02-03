@@ -12,7 +12,11 @@ const closeModal = () => (isShowModal.value = false);
       <div class="app-name-wrapper">
         <span>Todo App</span>
       </div>
-      <div class="add-new" @click="isShowModal = true">新規作成</div>
+      <ion-icon
+        class="create-button"
+        @click="isShowModal = true"
+        name="add-circle-outline"
+      ></ion-icon>
     </div>
     <TodoFormModalNew v-if="isShowModal" :closeModal="closeModal" />
   </div>

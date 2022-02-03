@@ -27,15 +27,16 @@ button {
   width: 90%;
   margin: 0 auto;
 }
-.add-new {
+.create-button {
   align-items: center;
   background-color: #6200ee;
   color: rgb(202, 202, 202);
   display: flex;
-  font-size: 1rem;
+  padding: 0 0.5rem;
+  font-size: 2rem;
   height: 100%;
 }
-.add-new:hover {
+.create-button:hover {
   background-color: #3700b3;
   cursor: pointer;
   opacity: 0.9;

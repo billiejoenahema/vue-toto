@@ -9,8 +9,8 @@ const closeModal = () => (isShowModal.value = false);
 <template>
   <div id="header">
     <div class="header-inner">
-      <div class="app-name-wrapper">
-        <span>Todo App</span>
+      <div class="app-logo-wrapper">
+        <img src="../assets/images/todo_logo_header.jpg" alt="brand logo" />
       </div>
       <ion-icon
         class="create-button"

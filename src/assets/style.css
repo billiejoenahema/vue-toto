@@ -27,6 +27,12 @@ button {
   width: 90%;
   margin: 0 auto;
 }
+.app-logo-wrapper > img {
+  height: 100%;
+}
+.app-logo-wrapper {
+  height: 80%;
+}
 .create-button {
   align-items: center;
   background-color: #6200ee;

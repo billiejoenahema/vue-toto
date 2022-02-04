@@ -1,8 +1,4 @@
-const priorityTypes = [
-  { type: 3, value: '高' },
-  { type: 2, value: '中' },
-  { type: 1, value: '低' },
-];
+import { priorityTypes } from '../utilities';
 
 const state = {
   newTodo: {
@@ -19,7 +15,7 @@ const getters = {
   todoList: (state) => state.todoList,
   isShowModal: (state) => state.isShowModal,
   priorityValue: () => (type) => {
-    return priorityTypes.find((o) => o.type === type).value;
+    return priorityTypes.find((o) => o.type === type)?.value;
   },
 };
 

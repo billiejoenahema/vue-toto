@@ -10,6 +10,7 @@ body {
 
 button {
   font-size: 0.9rem;
+  border-radius: 0;
 }
 #header {
   background-color: #37474f;
@@ -97,7 +98,7 @@ button {
 .process-type select {
   width: 100%;
   outline: none;
-  border-radius: 50px;
+  border-radius: 0px;
   margin: 0;
 }
 .btn {
@@ -107,9 +108,6 @@ button {
   margin-left: 16px;
   padding: 0.4rem;
   color: white;
-}
-.round-btn {
-  border-radius: 48px;
 }
 .round-btn:hover {
   cursor: pointer;
@@ -142,13 +140,11 @@ button {
   max-width: 500px;
   margin: 0 auto;
   background-color: rgb(61, 61, 61);
-  border-radius: 10px;
   padding: 32px;
   font-size: 0.9rem;
 }
 .modal input {
-  border: 1px solid darkgray;
-  border-radius: 5px;
+  border-radius: 0px;
   padding: 5px;
 }
 .modal-todo-title-all {
@@ -173,6 +169,7 @@ button {
 .input-row > select {
   width: 100%;
   margin-bottom: 16px;
+  border-radius: 0;
 }
 .btn-wrapper {
   display: flex;
@@ -181,12 +178,10 @@ button {
 .btn-wrapper button {
   background-color: dodgerblue;
   color: white;
-  border-radius: 10px;
   padding: 0.5rem 1rem;
   cursor: pointer;
 }
 .btn-wrapper button:disabled {
-  border: 1px solid darkgray;
   background-color: darkgray;
 }
 .btn-wrapper .cancel-btn {
@@ -202,4 +197,7 @@ button {
 }
 .check-mark {
   font-size: 1.2rem;
+}
+.submit {
+  width: 5rem;
 }

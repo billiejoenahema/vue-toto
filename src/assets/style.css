@@ -70,7 +70,8 @@ button {
   width: 90%;
   max-width: 800px;
   height: 100vh;
-  margin: 5rem auto 0;
+  margin: 0 auto;
+  padding-top: 6rem;
 }
 .todo-row {
   display: grid;
@@ -200,4 +201,38 @@ button {
 }
 .submit {
   width: 5rem;
+}
+form {
+  display: flex;
+  flex-direction: column;
+  max-width: 500px;
+  margin: 0 auto;
+  background-color: rgb(61, 61, 61);
+  padding: 32px;
+  font-size: 0.9rem;
+  border-radius: 0;
+}
+.column {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+.column label,
+.column input {
+  width: 100%;
+  border-radius: 0;
+  border: 0;
+}
+.login,
+.register {
+  display: flex;
+  justify-content: center;
+  cursor: pointer;
+  margin: 1rem 0;
+  padding: 0.5rem;
+  background: rgba(0, 0, 0, 0.74);
+}
+.login:hover,
+.register:hover {
+  opacity: 0.8;
 }

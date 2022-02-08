@@ -236,3 +236,7 @@ form {
 .register:hover {
   opacity: 0.8;
 }
+.error {
+  color: #d80028;
+  margin-top: 1rem;
+}

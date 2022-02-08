@@ -7,6 +7,7 @@ const user = reactive({
   name: '',
   password: '',
 });
+const errors = computed(() => store.getters['User/errors']);
 const canRegister = computed(() => store.getters['User/canRegister']);
 const login = () => {
   store.commit('User/login', user);
@@ -14,7 +15,6 @@ const login = () => {
 const register = async () => {
   await store.commit('User/checkCanRegister', user);
   if (canRegister.value) {
-    console.log('register!');
     store.dispatch('User/register', user);
   }
 };
@@ -27,6 +27,14 @@ const register = async () => {
       <input type="text" v-model="user.name" />
       <label>Password</label>
       <input type="password" v-model="user.password" />
+      <div
+        v-show="errors"
+        v-for="(error, index) in errors"
+        :key="index"
+        class="error"
+      >
+        {{ error }}
+      </div>
       <div class="button login" @click="login">Login</div>
       <div class="button register" @click="register">Register</div>
     </div>

@@ -28,6 +28,7 @@ const changeProcessType = () => {
 };
 const isShowTitleAll = ref('');
 const isHoverTooltip = ref(false);
+const isShowButtons = ref(false);
 const showTodoTitleAll = () => {
   isShowTitleAll.value = true;
 };
@@ -45,6 +46,12 @@ const leaveTooltip = () => {
   isHoverTooltip.value = false;
   hideTodoTitleAll();
 };
+const showButtons = () => {
+  isShowButtons.value = true;
+};
+const hideButtons = () => {
+  isShowButtons.value = false;
+};
 const isShowModal = ref(false);
 const closeModal = () => {
   isShowModal.value = false;
@@ -56,7 +63,7 @@ const deleteTodo = async () => {
 };
 </script>
 <template>
-  <div class="todo-row">
+  <div class="todo-row" @mouseover="showButtons" @mouseleave="hideButtons">
     <ion-icon
       name="checkbox-outline"
       v-if="todo.processType === 2"
@@ -85,10 +92,18 @@ const deleteTodo = async () => {
         </option>
       </select>
     </div>
-    <div @click="isShowModal = true" class="edit round-btn btn">
+    <div
+      v-if="isShowButtons"
+      @click="isShowModal = true"
+      class="edit round-btn btn"
+    >
       <span>編集</span>
     </div>
-    <div @click="isShowDeleteConfirmModal = true" class="delete round-btn btn">
+    <div
+      v-if="isShowButtons"
+      @click="isShowDeleteConfirmModal = true"
+      class="delete round-btn btn"
+    >
       <span>削除</span>
     </div>
     <TodoTitleTooltip

@@ -83,6 +83,16 @@ button {
   align-items: center;
   position: relative;
 }
+.todo-row:hover {
+  border-bottom: rgb(136, 136, 136) 1px solid;
+}
+.todoRowHover {
+  color: rgb(136, 136, 136);
+}
+.todoRowHover > .process-type > select {
+  color: rgb(136, 136, 136);
+  border: 1px solid rgb(136, 136, 136);
+}
 .over-flow {
   overflow: hidden;
   text-overflow: ellipsis;
@@ -192,7 +202,7 @@ button {
 .btn-wrapper .delete-submit {
   background-color: #b00020;
 }
-.isDone {
+.is-done {
   text-decoration: line-through;
   color: rgb(61, 61, 61);
 }

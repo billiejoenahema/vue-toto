@@ -29,6 +29,7 @@ const changeProcessType = () => {
 const isShowFullText = ref('');
 const isHoverTooltip = ref(false);
 const isShowButtons = ref(false);
+const todoRowHover = ref(false);
 const showTitleToolTip = () => {
   isShowFullText.value = true;
 };
@@ -46,11 +47,13 @@ const leaveTooltip = () => {
   isHoverTooltip.value = false;
   hideTitleToolTip();
 };
-const showButtons = () => {
+const handleMouseover = () => {
   isShowButtons.value = true;
+  todoRowHover.value = true;
 };
-const hideButtons = () => {
+const handleMouseleave = () => {
   isShowButtons.value = false;
+  todoRowHover.value = false;
 };
 const isShowModal = ref(false);
 const closeModal = () => {
@@ -63,7 +66,12 @@ const deleteTodo = async () => {
 };
 </script>
 <template>
-  <div class="todo-row" @mouseover="showButtons" @mouseleave="hideButtons">
+  <div
+    class="todo-row"
+    :class="{ todoRowHover: todoRowHover === true }"
+    @mouseover="handleMouseover"
+    @mouseleave="handleMouseleave"
+  >
     <ion-icon
       name="checkbox-outline"
       v-if="todo.processType === 2"

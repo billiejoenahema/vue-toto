@@ -26,16 +26,16 @@ const changeProcessType = () => {
     index: props.index,
   });
 };
-const isShowTitleAll = ref('');
+const isShowFullText = ref('');
 const isHoverTooltip = ref(false);
 const isShowButtons = ref(false);
-const showTodoTitleAll = () => {
-  isShowTitleAll.value = true;
+const showTitleToolTip = () => {
+  isShowFullText.value = true;
 };
-const hideTodoTitleAll = () => {
+const hideTitleToolTip = () => {
   setTimeout(() => {
     if (!isHoverTooltip.value) {
-      isShowTitleAll.value = false;
+      isShowFullText.value = false;
     }
   }, 100);
 };
@@ -44,7 +44,7 @@ const hoverTooltip = () => {
 };
 const leaveTooltip = () => {
   isHoverTooltip.value = false;
-  hideTodoTitleAll();
+  hideTitleToolTip();
 };
 const showButtons = () => {
   isShowButtons.value = true;
@@ -73,8 +73,8 @@ const deleteTodo = async () => {
     <div
       class="title-wrapper over-flow"
       :class="{ isDone: todo.processType === 2 }"
-      @mouseover="showTodoTitleAll"
-      @mouseleave="hideTodoTitleAll"
+      @mouseover="showTitleToolTip"
+      @mouseleave="hideTitleToolTip"
     >
       <span>{{ todo.title }}</span>
     </div>
@@ -107,7 +107,7 @@ const deleteTodo = async () => {
       <span>削除</span>
     </div>
     <TodoTitleTooltip
-      v-show="isShowTitleAll"
+      v-show="isShowFullText"
       :title="todo.title"
       :hoverTooltip="hoverTooltip"
       :leaveTooltip="leaveTooltip"

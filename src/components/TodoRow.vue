@@ -29,7 +29,6 @@ const changeProcessType = () => {
 const isShowFullText = ref('');
 const isHoverTooltip = ref(false);
 const isShowButtons = ref(false);
-const todoRowHover = ref(false);
 const showTitleToolTip = () => {
   isShowFullText.value = true;
 };
@@ -49,11 +48,9 @@ const leaveTooltip = () => {
 };
 const handleMouseover = () => {
   isShowButtons.value = true;
-  todoRowHover.value = true;
 };
 const handleMouseleave = () => {
   isShowButtons.value = false;
-  todoRowHover.value = false;
 };
 const isShowModal = ref(false);
 const closeModal = () => {
@@ -68,7 +65,6 @@ const deleteTodo = async () => {
 <template>
   <div
     class="todo-row"
-    :class="{ todoRowHover: todoRowHover === true }"
     @mouseover="handleMouseover"
     @mouseleave="handleMouseleave"
   >

@@ -79,19 +79,12 @@ button {
   border-bottom: lightgray 1px solid;
   margin-right: auto;
   margin-bottom: 30px;
-  padding: 0.5rem 0;
+  padding: 0.5rem;
   align-items: center;
   position: relative;
 }
 .todo-row:hover {
-  border-bottom: rgb(136, 136, 136) 1px solid;
-}
-.todoRowHover {
-  color: rgb(136, 136, 136);
-}
-.todoRowHover > .process-type > select {
-  color: rgb(136, 136, 136);
-  border: 1px solid rgb(136, 136, 136);
+  background-color: #37474f;
 }
 .over-flow {
   overflow: hidden;
@@ -217,7 +210,7 @@ form {
   flex-direction: column;
   max-width: 500px;
   margin: 0 auto;
-  background-color: rgb(61, 61, 61);
+  background-color: #37474f;
   padding: 32px;
   font-size: 0.9rem;
   border-radius: 0;

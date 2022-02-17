@@ -1,9 +1,10 @@
 <script setup>
 import { defineProps, reactive, ref, watchEffect } from 'vue';
-import store from '../store/index.js';
-import { priorityTypes, maxLength } from '../utilities.js';
+import { useStore } from 'vuex';
+import { maxLength, priorityTypes } from '../utilities.js';
 import TodoFormModalWrapper from './TodoFormModalWrapper';
 
+const store = useStore();
 const props = defineProps({
   closeModal: {
     type: Function,

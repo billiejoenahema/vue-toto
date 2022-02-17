@@ -23,10 +23,10 @@ const register = async () => {
 <template>
   <form>
     <div class="column">
-      <label>User Name</label>
-      <input type="text" v-model="user.name" />
-      <label>Password</label>
-      <input type="password" v-model="user.password" />
+      <label for="userName">User Name</label>
+      <input id="userName" type="text" v-model="user.name" />
+      <label for="password">Password</label>
+      <input id="password" type="password" v-model="user.password" />
       <div
         v-show="errors"
         v-for="(error, index) in errors"

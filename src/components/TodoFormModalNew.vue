@@ -22,18 +22,17 @@ const submitTodo = () => {
   props.closeModal();
 };
 const isDisabled = ref(true);
-const overLength = ref(false);
+const isOver = ref(false);
 
 watchEffect(() => {
-  if (!newTodo.title || newTodo.title.length > maxLength.title) {
+  if (maxLength.title < newTodo.title.length) {
+    isDisabled.value = true;
+    isOver.value = true;
+  } else if (newTodo.title.length === 0) {
     isDisabled.value = true;
   } else {
     isDisabled.value = false;
-  }
-  if (newTodo.title.length > maxLength.title) {
-    overLength.value = true;
-  } else {
-    overLength.value = false;
+    isOver.value = false;
   }
 });
 </script>
@@ -43,7 +42,7 @@ watchEffect(() => {
     <div class="input-row">
       <label for="titleInput">タイトル</label>
       <textarea
-        :class="{ 'red-border': overLength }"
+        :class="{ 'red-border': isOver }"
         v-model="newTodo.title"
         type="text"
         rows="6"
@@ -51,7 +50,7 @@ watchEffect(() => {
       ></textarea>
     </div>
     <p class="text-length">
-      <span :class="{ red: overLength }">{{ newTodo.title.length ?? 0 }}</span>
+      <span :class="{ red: isOver }">{{ newTodo.title.length ?? 0 }}</span>
       /
       {{ maxLength.title }}
     </p>

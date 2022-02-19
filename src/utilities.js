@@ -12,6 +12,6 @@ export const processTypes = [
 
 export const maxLength = {
   title: 200,
-  userName: 50,
+  name: 50,
   password: 32,
 };

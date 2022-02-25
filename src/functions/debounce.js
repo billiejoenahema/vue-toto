@@ -10,3 +10,7 @@ export const debounce = (func, wait = 1000) => {
     }, wait);
   };
 };
+// const sendData = () => console.log('send data')
+// const debounceSendData = debounce(() => sendData());
+//
+// @onkeydown="debounceSendData"

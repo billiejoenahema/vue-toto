@@ -1,5 +1,5 @@
 <script setup>
-import TodoFormModalNew from './TodoFormModalNew';
+import TodoFormModalNew from '../components/TodoFormModalNew';
 import { ref } from 'vue';
 
 const isShowModal = ref(false);

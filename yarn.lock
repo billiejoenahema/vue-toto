@@ -7672,10 +7672,10 @@ signal-exit@^3.0.0, signal-exit@^3.0.2, signal-exit@^3.0.3:
   resolved "https://registry.npmjs.org/signal-exit/-/signal-exit-3.0.4.tgz"
   integrity sha512-rqYhcAnZ6d/vTPGghdrw7iumdcbXpsk1b8IG/rz+VWV51DM0p7XCtMoJ3qhPLIbp3tvyt3pKRbaaEMZYpHto8Q==
 
-simpledotcss@2.1.0:
-  version "2.1.0"
-  resolved "https://registry.npmjs.org/simpledotcss/-/simpledotcss-2.1.0.tgz"
-  integrity sha512-REL4HZBg85Tywxw5AeTAF6/7iJYso6cW8kuu+bRg1gOSoE+TbwzOb7kWUhgVc+36iVI2fNlyX4BrUvUlIDjhZA==
+simpledotcss@2.3.3:
+  version "2.3.3"
+  resolved "https://registry.npmjs.org/simpledotcss/-/simpledotcss-2.3.3.tgz"
+  integrity sha512-nZsnZQK0mOxDjhG2LXAQaHBGfDHQvOIrNz8w8oACDq+wZniw9IPzbYKfTWjQy7zxaqJ89W1Yq1uhFzTz/i9kwA==
 
 sirv@^1.0.7:
   version "1.0.19"
